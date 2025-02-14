@@ -10,20 +10,29 @@ https://gitee.com/lazycatcloud/hclient-cli/releases
 
 ## 使用
 
+启动
 ```shell
-chmod +x ./hclient-cli-$arch
+chmod +x ./hclient-cli-$arch # 第一次启动需要添加可执行权限
 ./hclient-cli-$arch
 ```
 
-通过HTTP API来进行添加盒子等操作：
+### 盒子管理
+启动后，可以通过调用HTTP API来进行添加盒子等操作：
+（下面案例使用curl）
 ```shell
+# 添加盒子
 curl -X POST http://127.0.0.1:7777/add_box?bname=%s&uid=%s&password=%s
+# 设置TFA Code（两步验证码）
 curl -X POST http://127.0.0.1:7777/add_tfa?bname=%s&tfa=%s
+# 列举盒子
 curl http://127.0.0.1:7777/box_list
+# 删除盒子
 curl -X DELETE http://127.0.0.1:7777/del_box?bname=%s
+# 查看当前客户端信息
 curl http://127.0.0.1:7777/client_info
 ```
 
+### 访问盒子
 无特权可以默认通过http/socks5代理访问盒子：
 ```shell
 curl -x socks5h://127.0.0.1:61085 https://someone.heiyu.space
