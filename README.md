@@ -16,6 +16,23 @@ chmod +x ./hclient-cli-$arch # 第一次启动需要添加可执行权限
 ./hclient-cli-$arch
 ```
 
+帮助信息
+```
+Usage of ./hclient-cli-$arch:
+  -addr string
+    	API监听地址,支持 (default "127.0.0.1:7777")
+  -cfg string
+    	配置文件路径 (default "./cfg/")
+  -disable-api
+    	不开启API配置服务器,建议仅在第一次运行时开启配置,然后关闭API server
+  -http-addr string
+    	提供的http服务器地址 (default "127.0.0.1:61090")
+  -socks-addr string
+    	提供的socks5服务器地址 (default "127.0.0.1:61085")
+  -tun
+    	是否开启系统tun模式,开启后系统层面可以直接访问微服资源.
+```
+
 ### 盒子管理
 启动后，可以通过调用HTTP API来进行添加盒子等操作：
 （下面案例使用curl）
@@ -39,7 +56,8 @@ curl -x socks5h://127.0.0.1:61085 https://someone.heiyu.space
 curl -x http://127.0.0.1:61090 https://someone.heiyu.space
 ```
 
-也可以添加capability，直接启用VPN，就可以无需配置代理访问盒子：
+也可以添加capability，在启动hclient-cli时直接启用VPN，
+就可以无需配置代理访问盒子：
 ```shell
 sudo setcap cap_net_admin=ep ./hclient-cli-$arch
 ./hclient-cli-$arch -tun
