@@ -1,5 +1,7 @@
 # hclient-cli
 ## 下载
+当前仅提供了Linux版本，如有需求后续还会支持别的平台。
+
 https://gitee.com/lazycatcloud/hclient-cli/releases
 
 - 桌面64位电脑选择amd64版本
