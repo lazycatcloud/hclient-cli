@@ -27,8 +27,6 @@ Usage of ./hclient-cli-$arch:
     	不开启API配置服务器,建议仅在第一次运行时开启配置,然后关闭API server
   -http-addr string
     	提供的http服务器地址 (default "127.0.0.1:61090")
-  -socks-addr string
-    	提供的socks5服务器地址 (default "127.0.0.1:61085")
   -tun
     	是否开启系统tun模式,开启后系统层面可以直接访问微服资源.
 ```
@@ -50,13 +48,12 @@ curl http://127.0.0.1:7777/client_info
 ```
 
 ### 访问盒子
-无特权可以默认通过http/socks5代理访问盒子：
+无特权可以默认通过http代理访问盒子：
 ```shell
-curl -x socks5h://127.0.0.1:61085 https://someone.heiyu.space
-curl -x http://127.0.0.1:61090 https://someone.heiyu.space
+curl -U a:$password -x http://127.0.0.1:61090 https://$someone.heiyu.space
 ```
 
-也可以添加capability，在启动hclient-cli时直接启用VPN，
+推荐添加capability，在启动hclient-cli时直接启用VPN，
 就可以无需配置代理访问盒子：
 ```shell
 sudo setcap cap_net_admin=ep ./hclient-cli-$arch
