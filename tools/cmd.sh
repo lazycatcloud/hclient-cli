@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/ash
 
 cookie_file=/tmp/lzc_cookie
 
