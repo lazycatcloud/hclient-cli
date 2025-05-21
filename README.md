@@ -37,30 +37,30 @@ Usage of ./hclient-cli-$arch:
     	http代理设置auth密码（为空则随机生成）
 ```
 
-### 盒子管理
-启动后，可以通过调用HTTP API来进行添加盒子等操作：
+### 微服管理
+启动后，可以通过调用HTTP API来进行添加微服等操作：
 （下面案例使用curl）
 ```shell
-# 添加盒子
-curl -X POST http://127.0.0.1:7777/add_box?bname=%s&uid=%s&password=%s
+# 添加微服
+curl -X POST 'http://127.0.0.1:7777/add_box?bname=%s&uid=%s&password=%s'
 # 设置TFA Code（两步验证码）
 curl -X POST http://127.0.0.1:7777/add_tfa?bname=%s&tfa=%s
-# 列举盒子
+# 列举微服
 curl http://127.0.0.1:7777/box_list
-# 删除盒子
+# 删除微服
 curl -X DELETE http://127.0.0.1:7777/del_box?bname=%s
 # 查看当前客户端信息
 curl http://127.0.0.1:7777/client_info
 ```
 
-### 访问盒子
-无特权可以默认通过http代理访问盒子：
+### 访问微服
+无特权可以默认通过http代理访问微服：
 ```shell
 curl -x http://127.0.0.1:61090 https://$someone.heiyu.space
 ```
 
 推荐添加capability，在启动hclient-cli时直接启用VPN，
-就可以无需配置代理访问盒子：
+就可以无需配置代理访问微服：
 ```shell
 sudo setcap cap_net_admin=ep ./hclient-cli-$arch
 ./hclient-cli-$arch -tun
