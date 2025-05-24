@@ -44,19 +44,19 @@ Usage of ./hclient-cli-$arch:
 # 添加微服
 curl -X POST 'http://127.0.0.1:7777/add_box?bname=%s&uid=%s&password=%s'
 # 设置TFA Code（两步验证码）
-curl -X POST http://127.0.0.1:7777/add_tfa?bname=%s&tfa=%s
+curl -X POST 'http://127.0.0.1:7777/add_tfa?bname=%s&tfa=%s'
 # 列举微服
-curl http://127.0.0.1:7777/box_list
+curl 'http://127.0.0.1:7777/box_list'
 # 删除微服
-curl -X DELETE http://127.0.0.1:7777/del_box?bname=%s
+curl -X DELETE 'http://127.0.0.1:7777/del_box?bname=%s'
 # 查看当前客户端信息
-curl http://127.0.0.1:7777/client_info
+curl 'http://127.0.0.1:7777/client_info'
 ```
 
 ### 访问微服
 无特权可以默认通过http代理访问微服：
 ```shell
-curl -x http://127.0.0.1:61090 https://$someone.heiyu.space
+curl -x 'http://127.0.0.1:61090' 'https://$someone.heiyu.space'
 ```
 
 推荐添加capability，在启动hclient-cli时直接启用VPN，
