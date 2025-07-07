@@ -7,15 +7,23 @@ https://gitee.com/lazycatcloud/hclient-cli/releases
 
 ## 使用
 
-启动
+启动(Linux/macOS)
 ```shell
-chmod +x ./hclient-cli-$arch # 第一次启动需要添加可执行权限
-./hclient-cli-$arch
+chmod +x ./hclient-cli-$os-$arch # 第一次启动需要添加可执行权限
+./hclient-cli-$os-$arch
+```
+
+启动(Windows)
+```powershell
+# 下载 https://www.wintun.net/builds/wintun-0.14.1.zip
+# 放到和cli相同的目录下
+mv ./hclient-cli-$os-$arch ./hclient-cli-$os-$arch.exe
+./hclient-cli-$os-$arch.exe
 ```
 
 帮助信息
 ```
-Usage of ./hclient-cli-$arch:
+Usage of ./hclient-cli-$os-$arch:
   -cfg string
     	配置文件路径 (default "./cfg/")
   -api-addr string
@@ -57,6 +65,6 @@ curl -x 'http://127.0.0.1:61090' 'https://$someone.heiyu.space'
 推荐添加capability，在启动hclient-cli时直接启用VPN，
 就可以无需配置代理访问微服：
 ```shell
-sudo setcap cap_net_admin=ep ./hclient-cli-$arch
-./hclient-cli-$arch -tun
+sudo setcap cap_net_admin=ep ./hclient-cli-$os-$arch
+./hclient-cli-$os-$arch -tun
 ```
